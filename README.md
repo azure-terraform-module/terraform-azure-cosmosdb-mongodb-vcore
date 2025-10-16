@@ -36,7 +36,7 @@ cluster_tier fields
 Private network mode
 ```hcl
 module "cosmos_db_vcore" {
-  source = "azure-terraform-module/terraform-azure-cosmosdb-mongodb-vcore
+  source = "azure-terraform-module/cosmosdb-mongodb-vcore
 Public/azure"
   version = "0.0.1"
 
@@ -64,7 +64,7 @@ Public/azure"
 Public network mode
 ```hcl
 module "cosmos_db_vcore" {
-  source = "azure-terraform-module/terraform-azure-cosmosdb-mongodb-vcore
+  source = "azure-terraform-module/cosmosdb-mongodb-vcore
 Public/azure"
   version = "0.0.1"
 
