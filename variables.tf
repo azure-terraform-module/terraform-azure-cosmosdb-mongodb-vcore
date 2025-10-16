@@ -34,6 +34,10 @@ variable "network_mode" {
   description = "The network mode of the cluster."
   type        = string
   default     = "public" # private or public
+  validation {
+    condition     = contains(["public", "private"], var.network_mode)
+    error_message = "network_mode must be either \"public\" or \"private\"."
+  }
 }
 
 variable "subnet_id" {
@@ -41,6 +45,10 @@ variable "subnet_id" {
   type        = string
   nullable = true
   default = null
+  validation {
+    condition = var.network_mode != "private" || var.subnet_id != null
+    error_message = "subnet_id is required when network_mode is \"private\"."
+  }
 }
 
 variable "tags" {
@@ -64,4 +72,3 @@ variable "cluster_tier" {
     enable_high_availability = true
   }
 }
-
