@@ -45,7 +45,6 @@ module "cosmos_db_vcore" {
   location            = "westus2"
 
   administrator_username = "adminuser"
-  administrator_password = "P@ssw0rd123!"
 
   network_mode = "private"
   subnet_id    = "/subscriptions/xxx/resourceGroups/rg-net/providers/Microsoft.Network/virtualNetworks/vnet/subnets/pe-subnet"
@@ -73,7 +72,6 @@ module "cosmos_db_vcore" {
   location            = "westus2"
 
   administrator_username = "adminuser"
-  administrator_password = "P@ssw0rd123!"
 
   network_mode = "public"
 
