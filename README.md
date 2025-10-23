@@ -19,6 +19,7 @@ Terraform module to provision Azure Cosmos DB for MongoDB vCore (azurerm_mongo_c
 | `mongo_version` | MongoDB server version. | `"5.0"` | per provider support |
 | `network_mode` | Connectivity mode. `private` disables public access and creates Private Endpoint + DNS. | `"public"` | `public`, `private` |
 | `subnet_id` | Subnet for Private Endpoint. Required when `network_mode = "private"`. | `null` | Azure subnet resource ID |
+| `vnet_id` | Virtual Network ID for Private DNS zone link. Required when `network_mode = "private"`. | `null` | Virtual Network ID for Private DNS zone link. |
 | `tags` | Resource tags. | `{}` | map(string) |
 | `cluster_tier` | Sizing and HA settings (see fields below). | see defaults | object |
 
@@ -48,6 +49,7 @@ module "cosmos_db_vcore" {
 
   network_mode = "private"
   subnet_id    = "/subscriptions/xxx/resourceGroups/rg-net/providers/Microsoft.Network/virtualNetworks/vnet/subnets/pe-subnet"
+  vnet_id      = "/subscriptions/xxx/resourceGroups/rg-net/providers/Microsoft.Network/virtualNetworks/vnet"
 
   cluster_tier = {
     compute_tier             = "M20"

@@ -14,6 +14,12 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "vnet_id" {
+  description = "The ID of the virtual network."
+  type        = string
+  default     = ""
+}
+
 variable "location" {
   description = "The location of the resource group."
   type        = string
