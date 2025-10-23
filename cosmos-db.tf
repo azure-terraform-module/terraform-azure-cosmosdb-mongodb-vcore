@@ -21,9 +21,18 @@ resource "azurerm_mongo_cluster" "cosmos_db" {
 resource "azurerm_private_dns_zone" "private_dns_cosmos_db" {
   # Create if private network and private DNS zone is not provided
   count = ! local.is_public_network ? 1 : 0
-  name                = "privatelink.mongo.cosmos.azure.com"
+  name                = "privatelink.mongocluster.cosmos.azure.com"
   resource_group_name = var.resource_group_name
   tags = var.tags
+}
+
+# vnet link
+resource "azurerm_private_dns_zone_virtual_network_link" "private_dns_zone_virtual_network_link" {
+  count = ! local.is_public_network ? 1 : 0
+  name = "privatelink.mongocluster.cosmos.azure.com"
+  resource_group_name = var.resource_group_name
+  private_dns_zone_name = azurerm_private_dns_zone.private_dns_cosmos_db[0].name
+  virtual_network_id = var.subnet_id
 }
 
 # Create private endpoint - Private endpoint
