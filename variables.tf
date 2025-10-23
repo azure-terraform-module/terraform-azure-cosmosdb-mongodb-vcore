@@ -38,6 +38,8 @@ variable "administrator_username" {
 variable "administrator_password" {
   description = "The password of the administrator."
   type        = string
+  nullable = true
+  default = null
   sensitive   = true
 }
 
