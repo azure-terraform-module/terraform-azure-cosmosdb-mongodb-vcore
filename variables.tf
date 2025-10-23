@@ -15,9 +15,14 @@ variable "resource_group_name" {
 }
 
 variable "vnet_id" {
-  description = "The ID of the virtual network."
+  description = "Virtual Network ID for Private DNS zone link"
   type        = string
-  default     = ""
+  nullable = true 
+  default = null
+  validation {
+    condition = var.network_mode != "private" || var.vnet_id != null
+    error_message = "vnet_id is required when network_mode is \"private\"."  
+  }
 }
 
 variable "location" {
