@@ -38,7 +38,7 @@ Private network mode
 ```hcl
 module "cosmos_db_vcore" {
   source = "azure-terraform-module/cosmosdb-mongodb-vcore/azure"
-  version = "0.0.2"
+  version = "0.0.3"
 
   name                = "cosmosdb-mongo"
   resource_group_name = "rg-app"
@@ -66,7 +66,7 @@ Public network mode
 ```hcl
 module "cosmos_db_vcore" {
   source = "azure-terraform-module/cosmosdb-mongodb-vcore/azure"
-  version = "0.0.2"
+  version = "0.0.3"
 
   name                = "cosmosdb-mongo-public"
   resource_group_name = "rg-app"
