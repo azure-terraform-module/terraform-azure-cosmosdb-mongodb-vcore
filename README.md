@@ -38,14 +38,13 @@ Private network mode
 ```hcl
 module "cosmos_db_vcore" {
   source = "azure-terraform-module/cosmosdb-mongodb-vcore/azure"
-  version = "0.0.2"
+  version = "0.0.3"
 
   name                = "cosmosdb-mongo"
   resource_group_name = "rg-app"
   location            = "westus2"
 
   administrator_username = "adminuser"
-  administrator_password = "P@ssw0rd123!"
 
   network_mode = "private"
   subnet_id    = "/subscriptions/xxx/resourceGroups/rg-net/providers/Microsoft.Network/virtualNetworks/vnet/subnets/pe-subnet"
@@ -66,14 +65,13 @@ Public network mode
 ```hcl
 module "cosmos_db_vcore" {
   source = "azure-terraform-module/cosmosdb-mongodb-vcore/azure"
-  version = "0.0.2"
+  version = "0.0.3"
 
   name                = "cosmosdb-mongo-public"
   resource_group_name = "rg-app"
   location            = "westus2"
 
   administrator_username = "adminuser"
-  administrator_password = "P@ssw0rd123!"
 
   network_mode = "public"
 

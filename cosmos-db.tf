@@ -1,10 +1,19 @@
+resource "random_password" "admin_password" {
+  count = var.administrator_password == null ? 1 : 0
+  length  = 10
+  special = false
+  upper   = true
+  lower   = true
+  numeric = true
+}
+
 resource "azurerm_mongo_cluster" "cosmos_db" {
   # Basic settings
   name                   = var.name
   resource_group_name    = var.resource_group_name
   location               = var.location
   administrator_username = var.administrator_username
-  administrator_password = var.administrator_password
+  administrator_password = var.administrator_password == null ? random_password.admin_password[0].result : var.administrator_password
   version                = var.mongo_version
  
   # Cluster tier settings
